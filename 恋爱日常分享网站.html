@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&Z的恋爱日记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #ffe8e8 0%, #f8f4ff 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .memory-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .memory-card.dragging {
+            opacity: 0.5;
+            transform: rotate(5deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .memory-card.drag-over {
+            border: 2px dashed #ff6b6b;
+            background: #fff8f8;
+        }
+
+        .memory-date {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .memory-title {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .memory-content {
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .add-memory {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .add-memory h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .delete-btn {
+            background: #ff4757;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background: #ff3742;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        .heart {
+            color: #ff6b6b;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>❤️ Q&Z的恋爱日记 ❤️</h1>
+            <p>记录每一个甜蜜的瞬间，珍藏每一份美好的回忆</p>
+        </div>
+
+        <div class="timeline" id="memories-container">
+            <!-- 记忆卡片将通过JavaScript动态添加 -->
+        </div>
+
+        <div class="add-memory">
+            <h2>📝 添加新的美好回忆</h2>
+            <form id="memory-form">
+                <div class="form-group">
+                    <label for="memory-date">日期：</label>
+                    <input type="date" id="memory-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="memory-title">标题：</label>
+                    <input type="text" id="memory-title" placeholder="请输入回忆标题" required>
+                </div>
+                <div class="form-group">
+                    <label for="memory-content">内容：</label>
+                    <textarea id="memory-content" rows="4" placeholder="记录下这个美好的瞬间..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="memory-image">图片（可选）：</label>
+                    <input type="file" id="memory-image" accept="image/*">
+                </div>
+                <button type="submit" class="btn">💖 保存回忆</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>用心记录我们的爱情故事 <span class="heart">❤️</span></p>
+        </div>
+    </div>
+
+    <script>
+        // 示例数据（初始记忆）
+        const initialMemories = [
+            {
+                date: '2025-03-14',
+                title: '第一个情人节',
+                content: '我们一起度过了第一个情人节，第一次送你花，你还送了我玉兰花哦！',
+
+            },
+            {
+                date: '2025-03-08',
+                title: '官宣日',
+                content: '宝宝那天晚上你好美！',
+
+            }
+        ];
+
+        let memories = JSON.parse(localStorage.getItem('memories')) || initialMemories;
+
+        // 渲染记忆卡片
+        function renderMemories() {
+            const container = document.getElementById('memories-container');
+            container.innerHTML = '';
+
+            memories.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach((memory, index) => {
+                const memoryCard = document.createElement('div');
+                memoryCard.className = 'memory-card';
+                memoryCard.draggable = true;
+                memoryCard.dataset.index = index;
+
+                memoryCard.innerHTML = `
+                    <div class="memory-date">📅 ${formatDate(memory.date)}</div>
+                    <h3 class="memory-title">${memory.title}</h3>
+                    <p class="memory-content">${memory.content}</p>
+                    ${memory.image ? `<img src="${memory.image}" alt="${memory.title}" class="memory-image">` : ''}
+                    <button class="delete-btn" onclick="deleteMemory(${index})">🗑️ 删除</button>
+                `;
+
+                // 添加拖拽事件
+                memoryCard.addEventListener('dragstart', handleDragStart);
+                memoryCard.addEventListener('dragover', handleDragOver);
+                memoryCard.addEventListener('dragenter', handleDragEnter);
+                memoryCard.addEventListener('dragleave', handleDragLeave);
+                memoryCard.addEventListener('drop', handleDrop);
+                memoryCard.addEventListener('dragend', handleDragEnd);
+
+                container.appendChild(memoryCard);
+            });
+        }
+
+        // 格式化日期
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // 处理表单提交
+        document.getElementById('memory-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const date = document.getElementById('memory-date').value;
+            const title = document.getElementById('memory-title').value;
+            const content = document.getElementById('memory-content').value;
+            const imageInput = document.getElementById('memory-image');
+
+            let imageData = '';
+            if (imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imageData = e.target.result;
+                    addMemory(date, title, content, imageData);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                addMemory(date, title, content, imageData);
+            }
+        });
+
+        function addMemory(date, title, content, image) {
+            const newMemory = { date, title, content, image };
+            memories.push(newMemory);
+            localStorage.setItem('memories', JSON.stringify(memories));
+            renderMemories();
+
+            // 清空表单
+            document.getElementById('memory-form').reset();
+
+            alert('💕 回忆已成功保存！');
+        }
+
+        // 删除记忆
+        function deleteMemory(index) {
+            if (confirm('确定要删除这个美好的回忆吗？')) {
+                memories.splice(index, 1);
+                localStorage.setItem('memories', JSON.stringify(memories));
+                renderMemories();
+                alert('回忆已删除');
+            }
+        }
+
+        // 拖拽功能实现
+        let dragSource = null;
+
+        function handleDragStart(e) {
+            dragSource = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', this.dataset.index);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            this.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (dragSource !== this) {
+                const fromIndex = parseInt(dragSource.dataset.index);
+                const toIndex = parseInt(this.dataset.index);
+                
+                // 重新排序数组
+                const [movedItem] = memories.splice(fromIndex, 1);
+                memories.splice(toIndex, 0, movedItem);
+                
+                // 保存到本地存储
+                localStorage.setItem('memories', JSON.stringify(memories));
+                
+                // 重新渲染
+                renderMemories();
+            }
+            
+            this.classList.remove('drag-over');
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.memory-card').forEach(card => {
+                card.classList.remove('drag-over');
+            });
+        }
+
+        // 初始化渲染
+        renderMemories();
+
+        // 设置今天日期为默认值
+        document.getElementById('memory-date').valueAsDate = new Date();
+    </script>
+</body>
+
+</html>
