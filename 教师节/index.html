@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教师节祝福 - 感恩有您</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 50px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      max-width: 900px;
+      width: 90%;
+      text-align: center;
+      margin: 20px auto;
+      transition: all 0.3s ease;
+    }
+
+    .header {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .title {
+      font-size: 3em;
+      color: #2d3748;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    .subtitle {
+      font-size: 1.4em;
+      color: #4a5568;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .blessing-text {
+      font-size: 1.2em;
+      line-height: 2;
+      margin-bottom: 40px;
+      color: #2d3748;
+      text-align: left;
+      padding: 25px;
+      background: linear-gradient(135deg, #f7fafc, #edf2f7);
+      border-radius: 15px;
+      border-left: 6px solid #667eea;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .interactive-section {
+      margin: 35px 0;
+      padding: 25px;
+      background: rgba(247, 250, 252, 0.8);
+      border-radius: 18px;
+      border: 2px solid rgba(226, 232, 240, 0.5);
+    }
+
+    .confetti-btn {
+      background: linear-gradient(135deg, #ff6b6b, #feca57);
+      color: white;
+      border: none;
+      padding: 18px 30px;
+      border-radius: 50px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .confetti-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 107, 107, 0.3);
+    }
+
+    .confetti-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+    }
+
+    .flower-btn {
+      background: linear-gradient(135deg, #48bb78, #38a169);
+    }
+
+    .quote-btn {
+      background: linear-gradient(135deg, #9f7aea, #805ad5);
+    }
+
+    .timeline-btn {
+      background: linear-gradient(135deg, #ed8936, #dd6b20);
+    }
+
+    .message-input {
+      width: 100%;
+      padding: 18px 20px;
+      border: 3px solid #e2e8f0;
+      border-radius: 15px;
+      font-size: 1.1em;
+      margin: 15px 0 20px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 120px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .message-input:focus {
+      outline: none;
+      border-color: #4ecdc4;
+      box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .message-display {
+      background: linear-gradient(135deg, #fff5f5, #f0fff4);
+      padding: 25px;
+      border-radius: 18px;
+      margin: 25px 0;
+      min-height: 120px;
+      border-left: 6px solid #4ecdc4;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .message-display:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 高级图片轮播区域 */
+    .image-slider {
+      margin: 50px 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      height: 450px;
+    }
+
+    .slider-container {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: scale(1.1) translateX(100%);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+      z-index: 2;
+    }
+
+    .slide.prev {
+      transform: scale(1.1) translateX(-100%);
+    }
+
+    .slide.next {
+      transform: scale(1.1) translateX(100%);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 30px;
+      transition: transform 0.8s ease;
+    }
+
+    .slide:hover img {
+      transform: scale(1.08);
+    }
+
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+      color: white;
+      padding: 40px 30px 25px;
+      border-radius: 0 0 30px 30px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .slide:hover .slide-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-title {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .slide-desc {
+      font-size: 1.2em;
+      opacity: 0.9;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 15px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2em;
+      color: rgba(255, 255, 255, 0.9);
+      transition: all 0.2s ease;
+      pointer-events: auto;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: rgba(0, 0, 0, 0.8);
+      transform: scale(1.05);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .image-slider:hover .slider-dots {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .dot.active {
+      background: rgba(255, 255, 255, 1);
+      transform: scale(1.3);
+      border-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    .dot:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: scale(1.1);
+    }
+
+    .flower {
+      font-size: 3.5em;
+      margin: 15px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    }
+
+    .flower:hover {
+      transform: scale(1.3) rotate(12deg) translateY(-5px);
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+    }
+
+    .hidden-message {
+      opacity: 0;
+      transform: translateY(30px) scale(0.9);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, #48bb78, #38a169);
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(72, 187, 120, 0.3);
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .comments-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .comments-section h4 {
+      color: #4ecdc4;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.3em;
+    }
+
+    .comments-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .comment-item {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border-left: 4px solid #4ecdc4;
+      animation: fadeInUp 0.4s ease-out;
+      position: relative;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255, 107, 107, 0.8);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .comment-item:hover .delete-btn {
+      opacity: 1;
+    }
+
+    .delete-btn:hover {
+      background: #ff6b6b;
+      transform: scale(1.1);
+    }
+
+    .comment-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .comment-author {
+      font-weight: bold;
+      color: #ff6b6b;
+      font-size: 0.9em;
+    }
+
+    .comment-time {
+      color: #666;
+      font-size: 0.8em;
+    }
+
+    .comment-content {
+      color: #333;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .empty-comments {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      padding: 40px;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #4a5568;
+      font-size: 1em;
+      padding: 20px;
+      background: rgba(247, 250, 252, 0.8);
+      border-radius: 15px;
+      border-top: 3px solid #e2e8f0;
+    }
+
+    .teacher-quotes {
+      margin: 30px 0;
+      padding: 25px;
+      background: linear-gradient(135deg, #fff5f5, #fed7d7);
+      border-radius: 18px;
+      border-left: 6px solid #f56565;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.2em;
+      color: #2d3748;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .quote-author {
+      text-align: right;
+      color: #718096;
+      font-weight: 500;
+    }
+
+    .timeline {
+      margin: 35px 0;
+      padding: 25px;
+      background: linear-gradient(135deg, #ebf8ff, #bee3f8);
+      border-radius: 18px;
+      border-left: 6px solid #3182ce;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(5px);
+    }
+
+    .timeline-icon {
+      font-size: 2em;
+      margin-right: 15px;
+      color: #3182ce;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-title {
+      font-size: 1.3em;
+      color: #2d3748;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .timeline-desc {
+      color: #718096;
+      line-height: 1.6;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg) scale(0.5);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(600px) rotate(720deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background: #ff6b6b;
+      animation: confetti-fall 3s ease-in-out forwards;
+      pointer-events: none;
+      border-radius: 50%;
+      z-index: 1000;
+    }
+
+    .heart {
+      color: #ff6b6b;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      display: inline-block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    @keyframes heartbeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+
+      50% {
+        transform: scale(1.2);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      }
+    }
+
+    @keyframes titleGlow {
+      0% {
+        text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+      }
+
+      100% {
+        text-shadow: 0 0 30px rgba(118, 75, 162, 0.7),
+          0 0 40px rgba(102, 126, 234, 0.4);
+      }
+    }
+
+    /* 极光背景效果 */
+    .aurora {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg,
+          rgba(255, 182, 193, 0.3),
+          rgba(173, 216, 230, 0.3),
+          rgba(255, 218, 185, 0.3),
+          rgba(221, 160, 221, 0.3),
+          rgba(255, 255, 224, 0.3));
+      background-size: 400% 400%;
+      animation: aurora 12s ease infinite;
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    @keyframes aurora {
+      0% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+      }
+
+      50% {
+        background-position: 100% 50%;
+        opacity: 1;
+      }
+
+      100% {
+        background-position: 0% 50%;
+        opacity: 0.7;
+      }
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+        margin: 20px auto;
+        width: 92%;
+        border-radius: 20px;
+      }
+
+      .title {
+        font-size: 2.2em;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-size: 1.2em;
+        margin-bottom: 25px;
+      }
+
+      .blessing-text {
+        font-size: 1.1em;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      .confetti-btn {
+        padding: 16px 28px;
+        font-size: 1.1em;
+        margin: 10px 6px;
+        width: calc(100% - 12px);
+      }
+
+      .flower {
+        font-size: 2.8em;
+        margin: 12px;
+      }
+
+      .interactive-section {
+        padding: 20px;
+        margin: 25px 0;
+      }
+
+      .message-input {
+        padding: 16px;
+        font-size: 1em;
+        min-height: 100px;
+      }
+
+      .message-display {
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .teacher-quotes,
+      .timeline {
+        padding: 20px;
+        margin: 25px 0;
+      }
+
+      .quote {
+        font-size: 1.1em;
+      }
+
+      .timeline-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .timeline-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 25px 15px;
+        margin: 15px auto;
+        width: 95%;
+        border-radius: 18px;
+      }
+
+      .title {
+        font-size: 1.8em;
+      }
+
+      .subtitle {
+        font-size: 1.1em;
+      }
+
+      .confetti-btn {
+        padding: 14px 24px;
+        font-size: 1em;
+        margin: 8px 4px;
+      }
+
+      .flower {
+        font-size: 2.5em;
+        margin: 10px 8px;
+      }
+
+      .blessing-text {
+        font-size: 1em;
+        padding: 18px;
+      }
+
+      .interactive-section {
+        padding: 18px;
+      }
+
+      .message-input {
+        padding: 14px;
+        min-height: 90px;
+      }
+    }
+
+    /* 视频背景样式 */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -100;
+      object-fit: cover;
+      filter: brightness(0.7) blur(2px);
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+      z-index: -99;
+    }
+
+    /* 花瓣飘落效果 */
+    .flower-petal {
+      position: fixed;
+      top: -50px;
+      pointer-events: none;
+      z-index: 1000;
+      animation: petal-fall linear forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes petal-fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 鲜花消息样式 */
+    .flower-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px 30px;
+      border-radius: 20px;
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .flower-message.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .flower-message-content {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .flower-icon {
+      font-size: 2em;
+      animation: flower-bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes flower-bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-10px);
+      }
+
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* 深色模式支持 */
+    @media (prefers-color-scheme: dark) {
+      .container {
+        background: rgba(26, 32, 44, 0.95);
+        color: #e2e8f0;
+        border-color: rgba(74, 85, 104, 0.3);
+      }
+
+      .blessing-text {
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        color: #e2e8f0;
+      }
+
+      .interactive-section {
+        background: rgba(45, 55, 72, 0.8);
+        border-color: rgba(74, 85, 104, 0.4);
+      }
+
+      .message-input {
+        background: rgba(26, 32, 44, 0.9);
+        border-color: #4a5568;
+        color: #e2e8f0;
+      }
+
+      .message-display {
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        color: #e2e8f0;
+      }
+
+      .footer {
+        background: rgba(45, 55, 72, 0.8);
+        color: #cbd5e0;
+        border-color: #4a5568;
+      }
+
+      .teacher-quotes {
+        background: linear-gradient(135deg, #742a2a, #9b2c2c);
+        color: #fed7d7;
+      }
+
+      .timeline {
+        background: linear-gradient(135deg, #2c5282, #3182ce);
+        color: #bee3f8;
+      }
+
+      .timeline-item {
+        background: rgba(26, 32, 44, 0.9);
+        color: #e2e8f0;
+      }
+
+      .delete-btn {
+        background: rgba(255, 107, 107, 0.6);
+      }
+
+      .delete-btn:hover {
+        background: #ff6b6b;
+      }
+    }
+
+    /* 3D翻转贺卡样式 */
+    .greeting-cards-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    .greeting-card {
+      width: 300px;
+      height: 400px;
+      position: relative;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .greeting-card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-inside {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-front {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card-inside {
+      background: white;
+      color: #333;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-front h2,
+    .card-inside h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .code-heart {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+
+    .bracket {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    .code-tree,
+    .code-array {
+      font-family: 'Courier New', monospace;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .tree-node {
+      color: #4ecdc4;
+      font-weight: bold;
+    }
+
+    .tree-branch {
+      color: #95e1d3;
+      display: block;
+      margin-left: 20px;
+    }
+
+    .array {
+      color: #f38181;
+      font-weight: bold;
+    }
+
+    .signature {
+      margin-top: 30px;
+      text-align: right;
+      font-style: italic;
+      color: #667eea;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 计算机学院特色装饰图层 -->
+  <div class="code-bg"></div>
+  <div class="binary-rain" id="binaryRain"></div>
+  <div class="circuit-pattern"></div>
+
+  <!-- 浮动代码元素 -->
+  <div class="floating-elements" id="floatingElements"></div>
+
+  <!-- 极光背景 -->
+  <div class="aurora"></div>
+  <div class="aurora" style="animation-delay: -2s;"></div>
+  <div class="aurora" style="animation-delay: -4s;"></div>
+
+  <div class="video-overlay"></div>
+  <div class="aurora"></div>
+  <div class="container">
+    <div class="header">
+      <h1 class="title">🎓 教师节快乐 🎓</h1>
+      <p class="subtitle">感恩有您，致敬所有信息科学与工程学院的老师们</p>
+    </div>
+
+    <!-- 3D翻转贺卡区域 -->
+    <div class="greeting-cards-container">
+      <div class="greeting-card">
+        <div class="card-front">
+          <h2>程序员的感恩</h2>
+          <div class="code-heart">
+            <span class="bracket">&lt;</span>
+            <span class="heart">❤️</span>
+            <span class="bracket">&gt;</span>
+          </div>
+          <p>您用代码编织我们的未来</p>
+        </div>
+        <div class="card-inside">
+          <h3>亲爱的老师</h3>
+          <p>您教会我们的不只是代码，<br>
+            更是解决问题的思维方式。<br>
+            每一行注释都是您的耐心，<br>
+            每一个函数都是您的智慧。</p>
+          <div class="signature">学生敬上</div>
+        </div>
+      </div>
+
+      <div class="greeting-card">
+        <div class="card-front">
+          <h2>算法般的指引</h2>
+          <div class="code-tree">
+            <span class="tree-node">根</span>
+            <span class="tree-branch">├── 知识</span>
+            <span class="tree-branch">└── 智慧</span>
+          </div>
+          <p>最优路径的引路人</p>
+        </div>
+        <div class="card-inside">
+          <h3>敬爱的导师</h3>
+          <p>您是我们人生算法的优化器，<br>
+            让复杂的问题变得简单，<br>
+            让模糊的路径变得清晰。<br>
+            感谢您的指引！</p>
+          <div class="signature">信息学子</div>
+        </div>
+      </div>
+
+      <div class="greeting-card">
+        <div class="card-front">
+          <h2>数据结构的爱</h2>
+          <div class="code-array">
+            <span class="array">[爱, 耐心, 智慧, 奉献]</span>
+          </div>
+          <p>存储在我们心中的温暖</p>
+        </div>
+        <div class="card-inside">
+          <h3>最爱的老师</h3>
+          <p>您用爱心构建我们的链表，<br>
+            用耐心平衡我们的二叉树，<br>
+            用智慧遍历我们的人生图。<br>
+            感恩相遇！</p>
+          <div class="signature">全体学生</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blessing-text">
+      <p>亲爱的老师：</p>
+      <p>在这个金秋送爽、丹桂飘香的季节里，我们迎来了又一个教师节。</p>
+      <p>回首往昔，是您用智慧的双手为我们打开知识的大门；</p>
+      <p>是您用无私的爱心温暖我们成长的道路；</p>
+      <p>是您用辛勤的汗水浇灌我们理想的种子。</p>
+
+      <p>您就像辛勤的园丁，培育着祖国的花朵；</p>
+      <p>您就像燃烧的蜡烛，照亮我们前行的道路；</p>
+      <p>您就像智慧的明灯，指引我们人生的方向。</p>
+
+      <p>在这个特别的日子里，请允许我们向您致以最崇高的敬意和最真挚的祝福：</p>
+      <p>愿您身体健康，工作顺利，家庭幸福！</p>
+      <p>愿您的教诲如春风化雨，滋润每一个学子的心田！</p>
+      <p>愿您的付出结出丰硕的果实，桃李满天下！</p>
+
+      <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #667eea;">
+        💖 感恩有您，亲爱的老师！教师节快乐！ 💖
+      </p>
+    </div>
+
+    <div class="comments-section">
+      <h4>🌟 大家的祝福墙</h4>
+      <div id="commentsList" class="comments-list">
+        <!-- 祝福将显示在这里 -->
+      </div>
+    </div>
+
+    <div class="interactive-section">
+      <h3>🌸 点击鲜花，为老师送上祝福</h3>
+      <p style="text-align: center; color: #7f8c8d; margin-bottom: 20px; font-size: 1.1em;">
+        💝 每朵鲜花都有独特的祝福语，点击即可发送！
+      </p>
+      <div>
+        <span class="flower" onclick="showSpecialMessage('🌷')">🌷</span>
+        <span class="flower" onclick="showSpecialMessage('🌹')">🌹</span>
+        <span class="flower" onclick="showSpecialMessage('🌺')">🌺</span>
+        <span class="flower" onclick="showSpecialMessage('🌻')">🌻</span>
+        <span class="flower" onclick="showSpecialMessage('💐')">💐</span>
+        <span class="flower" onclick="showSpecialMessage('🌸')">🌸</span>
+      </div>
+    </div>
+
+    <!-- 图片轮播区域 -->
+    <div class="image-slider">
+      <div class="slider-container" id="sliderContainer">
+        <div class="slide active">
+          <img src="155aef452056c1c3e8769a829d901574.jpg" alt="教师节祝福"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="slide">
+          <img src="5321ebe4bf16b6906569da3c67b827d1.jpg" alt="感恩教师"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="slide">
+          <img src="8eefdd6dd8250d1ae4c1dcfc7cee0561.jpg" alt="祝福老师"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="slide">
+          <img src="b58055148e4d2e32dd829209d5c67674.jpg" alt="美好祝愿"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button class="nav-btn prev" onclick="prevSlide()">❮</button>
+        <button class="nav-btn next" onclick="nextSlide()">❯</button>
+      </div>
+      <div class="slider-dots"></div>
+    </div>
+
+    <div class="hidden-message" id="specialMessage">
+      <p>谢谢您的祝福！老师一定会很感动的！</p>
+    </div>
+
+    <div class="footer">
+      <p>❤️ 信工学子们感恩每一位辛勤付出的教育工作者 ❤️</p>
+    </div>
+  </div>
+
+  <script>
+    // 祝福墙功能
+    const commentsList = document.getElementById('commentsList');
+
+    // 存储祝福数据
+    let comments = JSON.parse(localStorage.getItem('teacherDayComments')) || [];
+
+    // 鲜花对应的祝福语库
+    const flowerMessages = {
+      '🌷': [
+        '郁金香般的祝福，愿老师永远美丽动人，桃李满天下！',
+        '如郁金香般优雅，老师您的教诲让我终生难忘！',
+        '郁金香绽放时，愿老师每天都充满阳光和喜悦！',
+        '愿老师如郁金香般高贵优雅，教育事业蒸蒸日上！'
+      ],
+      '🌹': [
+        '玫瑰代表我的心，祝老师节日快乐，永远年轻！',
+        '如玫瑰般芬芳的师恩，永远铭刻在学生心中！',
+        '愿老师如玫瑰般永远绽放美丽与智慧！',
+        '玫瑰虽美，您的教诲更美，祝老师幸福安康！'
+      ],
+      '🌺': [
+        '芙蓉花开，师恩难忘，祝老师幸福安康！',
+        '如芙蓉般纯洁的师生情，愿老师永远快乐！',
+        '芙蓉绽放的祝福，愿老师事业蒸蒸日上！',
+        '芙蓉如面柳如眉，老师恩情永难忘！'
+      ],
+      '🌻': [
+        '向日葵永远向着太阳，就像学生永远感恩老师！',
+        '愿老师如向日葵般永远充满阳光和希望！',
+        '向日葵的金色祝福，愿老师收获满满幸福！',
+        '如向日葵追随阳光，我们永远追随您的教诲！'
+      ],
+      '💐': [
+        '花束般的感恩，凝聚着学生们最真挚的祝福！',
+        '一束鲜花一份情，祝老师节日快乐，万事如意！',
+        '缤纷花束，承载无限感恩与祝福！',
+        '花香四溢，恩情满溢，祝老师永远幸福！'
+      ],
+      '🌸': [
+        '樱花绽放时，愿老师永远年轻美丽，幸福安康！',
+        '如樱花般绚烂的师恩，温暖着每一个学生的心！',
+        '樱花飞舞的祝福，愿老师梦想成真，心想事成！',
+        '樱花烂漫时，愿老师笑容如春风般温暖！'
+      ]
+    };
+
+    // 初始化祝福墙
+    function initComments() {
+      renderComments();
+    }
+
+    // 点击鲜花发送祝福
+    function showSpecialMessage(flower) {
+      const messages = flowerMessages[flower];
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+
+      // 创建祝福数据
+      const comment = {
+        id: Date.now(),
+        author: '热心学生',
+        content: `${flower} ${randomMessage}`,
+        time: new Date().toLocaleString('zh-CN'),
+        timestamp: Date.now()
+      };
+
+      comments.unshift(comment); // 添加到开头
+
+      // 限制祝福数量，最多显示50条
+      if (comments.length > 50) {
+        comments = comments.slice(0, 50);
+      }
+
+      // 保存到本地存储
+      localStorage.setItem('teacherDayComments', JSON.stringify(comments));
+
+      // 重新渲染祝福墙
+      renderComments();
+
+      // 显示鲜花特效
+      showFlowerEffect(flower);
+
+      // 创建花瓣飘落效果
+      createFlowerPetals(flower);
+
+      // 滚动到祝福墙顶部
+      document.querySelector('.comments-section').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+    // 渲染祝福墙
+    function renderComments() {
+      if (comments.length === 0) {
+        commentsList.innerHTML = `
+          <div style="text-align: center; color: #7f8c8d; padding: 40px; font-size: 1.1em;">
+            💝 点击上方的鲜花，为老师送上美好祝福！<br>
+            <small style="opacity: 0.7;">每朵鲜花都有独特的祝福语哦~</small>
+          </div>
+        `;
+        return;
+      }
+
+      const commentsHTML = comments.map(comment => `
+        <div class="comment-item" style="animation: fadeInUp 0.5s ease; position: relative;">
+          <div class="comment-header">
+            <span class="comment-author">${escapeHtml(comment.author)}</span>
+            <span class="comment-time">${getRelativeTime(comment.timestamp)}</span>
+            <button class="delete-btn" onclick="deleteComment(${comment.id})" title="删除这条祝福">
+              ✕
+            </button>
+          </div>
+          <div class="comment-content">${escapeHtml(comment.content)}</div>
+        </div>
+      `).join('');
+
+      commentsList.innerHTML = commentsHTML;
+    }
+
+    // 获取相对时间
+    function getRelativeTime(timestamp) {
+      const now = Date.now();
+      const diff = now - timestamp;
+
+      const seconds = Math.floor(diff / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+
+      if (days > 0) return `${days}天前`;
+      if (hours > 0) return `${hours}小时前`;
+      if (minutes > 0) return `${minutes}分钟前`;
+      return '刚刚';
+    }
+
+    // HTML转义防止XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // 删除祝福
+    function deleteComment(commentId) {
+      if (confirm('确定要删除这条祝福吗？')) {
+        comments = comments.filter(comment => comment.id !== commentId);
+        localStorage.setItem('teacherDayComments', JSON.stringify(comments));
+        renderComments();
+
+        // 显示删除成功的提示
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #ff6b6b;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 8px;
+          font-size: 14px;
+          z-index: 10000;
+          animation: fadeInUp 0.3s ease;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        `;
+        toast.textContent = '祝福已删除';
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.animation = 'fadeOut 0.3s ease forwards';
+          setTimeout(() => toast.remove(), 300);
+        }, 2000);
+      }
+    }
+
+    // 显示鲜花特效
+    function showFlowerEffect(flower) {
+      const message = document.createElement('div');
+      message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 15px;
+        font-size: 2em;
+        font-weight: bold;
+        z-index: 10000;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        animation: flowerPopup 1s ease-out forwards;
+        pointer-events: none;
+      `;
+      message.textContent = flower;
+      document.body.appendChild(message);
+
+      setTimeout(() => {
+        message.style.animation = 'fadeOut 0.3s ease-out forwards';
+        setTimeout(() => message.remove(), 300);
+      }, 1000);
+    }
+
+    // 创建花瓣飘落效果
+    function createFlowerPetals(flower) {
+      const colors = {
+        '🌷': '#ff6b6b',
+        '🌹': '#e74c3c',
+        '🌺': '#f39c12',
+        '🌻': '#f1c40f',
+        '💐': '#9b59b6',
+        '🌸': '#ff9ff3'
+      };
+
+      const flowerColor = colors[flower] || '#ff6b6b';
+
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const petal = document.createElement('div');
+          petal.innerHTML = flower;
+          petal.style.cssText = `
+            position: fixed;
+            top: -50px;
+            left: ${Math.random() * 100}vw;
+            font-size: 1.5em;
+            pointer-events: none;
+            z-index: 1000;
+            animation: petalFall 3s linear forwards;
+          `;
+          document.body.appendChild(petal);
+
+          setTimeout(() => petal.remove(), 3000);
+        }, i * 100);
+      }
+    }
+
+    // 添加CSS动画样式
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes flowerPopup {
+        0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      }
+      
+      @keyframes fadeOut {
+        to { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      }
+      
+      @keyframes petalFall {
+        0% {
+          transform: translateY(-50px) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // 初始化祝福墙
+    initComments();
+
+
+
+    function createConfetti() {
+      const colors = ['#ff6b6b', '#feca57', '#48bb78', '#3498db', '#9b59b6', '#e74c3c'];
+      for (let i = 0; i < 80; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          confetti.style.width = (Math.random() * 8 + 8) + 'px';
+          confetti.style.height = (Math.random() * 8 + 8) + 'px';
+          confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+          document.body.appendChild(confetti);
+
+          setTimeout(() => {
+            confetti.remove();
+          }, 5000);
+        }, i * 50);
+      }
+    }
+
+    // 鲜花生长效果
+    function growFlowers() {
+      if (!messageInput.value.trim()) {
+        alert('请先写下您的祝福！');
+        return;
+      }
+
+      const flowers = document.querySelectorAll('.flower');
+      flowers.forEach(flower => {
+        flower.style.animation = 'grow 1s ease-in-out';
+        setTimeout(() => {
+          flower.style.animation = '';
+        }, 1000);
+      });
+
+      // 显示鲜花消息
+      const messages = [
+        '💐 感谢老师的辛勤付出和无私奉献！',
+        '🌹 老师，您用知识的甘露浇灌我们理想的花朵！',
+        '🌸 感恩有您，亲爱的老师，您是我们人生的引路人！',
+        '🌺 祝老师教师节快乐，桃李满天下！',
+        '🌻 您是我们心中最美的园丁，培育我们茁壮成长！',
+        '🌸 樱花绽放时，愿老师永远年轻美丽，幸福安康！'
+      ];
+
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      showHiddenMessage(randomMessage);
+      createConfetti();
+    }
+
+    // 显示随机教师名言
+    function showRandomQuote() {
+      const quote = teacherQuotes[Math.floor(Math.random() * teacherQuotes.length)];
+      const quoteSection = document.getElementById('quoteSection');
+      const quoteText = document.getElementById('quoteText');
+      const quoteAuthor = document.getElementById('quoteAuthor');
+
+      quoteText.textContent = `"${quote.text}"`;
+      quoteAuthor.textContent = `—— ${quote.author}`;
+
+      // 隐藏其他部分
+      document.getElementById('timelineSection').classList.remove('show');
+
+      // 显示名言
+      setTimeout(() => {
+        quoteSection.classList.add('show');
+      }, 100);
+
+      // 8秒后自动隐藏
+      setTimeout(() => {
+        quoteSection.classList.remove('show');
+      }, 8000);
+    }
+
+    // 显示时光轴
+    function showTimeline() {
+      const timelineSection = document.getElementById('timelineSection');
+
+      // 隐藏其他部分
+      document.getElementById('quoteSection').classList.remove('show');
+
+      // 显示时光轴
+      setTimeout(() => {
+        timelineSection.classList.add('show');
+      }, 100);
+
+      // 15秒后自动隐藏
+      setTimeout(() => {
+        timelineSection.classList.remove('show');
+      }, 15000);
+    }
+
+    // 显示隐藏消息
+    function showHiddenMessage(message) {
+      const hiddenMsg = document.createElement('div');
+      hiddenMsg.className = 'hidden-message';
+      hiddenMsg.textContent = message;
+      document.querySelector('.interactive-section').appendChild(hiddenMsg);
+
+      setTimeout(() => {
+        hiddenMsg.classList.add('show');
+      }, 100);
+
+      setTimeout(() => {
+        hiddenMsg.classList.remove('show');
+        setTimeout(() => {
+          hiddenMsg.remove();
+        }, 600);
+      }, 4000);
+    }
+
+    // 高级图片轮播功能
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.querySelector('.slider-dots');
+    let autoPlayInterval;
+
+    // 初始化轮播
+    function initSlider() {
+      // 创建导航点
+      slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        }
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+
+      // 添加标题
+      slides.forEach((slide, index) => {
+        const captions = [
+          { title: '感恩', desc: '感恩信工每一位辛勤付出的老师' },
+          { title: '感爱', desc: '智慧与爱心照亮学子前程' },
+          { title: '感愿', desc: '愿信工老师们桃李满天下' },
+          { title: '感怀', desc: '您用代码编织我们的未来' }
+        ];
+
+        const caption = document.createElement('div');
+        caption.className = 'slide-caption';
+        caption.innerHTML = `
+                    <div class="slide-title">${captions[index].title}</div>
+                    <div class="slide-desc">${captions[index].desc}</div>
+                `;
+        slide.appendChild(caption);
+      });
+
+      startAutoPlay();
+
+      // 添加触摸滑动支持
+      let startX, moveX;
+      const slider = document.querySelector('.image-slider');
+
+      slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        clearInterval(autoPlayInterval);
+      });
+
+      slider.addEventListener('touchmove', (e) => {
+        moveX = e.touches[0].clientX;
+      });
+
+      slider.addEventListener('touchend', () => {
+        if (moveX < startX - 50) {
+          nextSlide();
+        } else if (moveX > startX + 50) {
+          prevSlide();
+        }
+        startAutoPlay();
+      });
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    function goToSlide(index) {
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.remove('active', 'prev', 'next');
+
+        if (slideIndex === index) {
+          slide.classList.add('active');
+        } else if (slideIndex === (index - 1 + slides.length) % slides.length) {
+          slide.classList.add('prev');
+        } else if (slideIndex === (index + 1) % slides.length) {
+          slide.classList.add('next');
+        }
+      });
+
+      currentSlide = index;
+      updateDots();
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function startAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(nextSlide, 6000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    // 鼠标悬停时暂停自动播放
+    const slider = document.querySelector('.image-slider');
+    slider.addEventListener('mouseenter', stopAutoPlay);
+    slider.addEventListener('mouseleave', startAutoPlay);
+
+
+
+    // 页面加载时的动画
+    document.addEventListener('DOMContentLoaded', function () {
+      const title = document.querySelector('.title');
+      title.style.animation = 'heartbeat 2s ease-in-out';
+
+      // 初始化轮播
+      initSlider();
+
+      // 自动显示一些礼花
+      setTimeout(() => {
+        for (let i = 0; i < 30; i++) {
+          createConfetti();
+        }
+      }, 1000);
+    });
+  </script>
+</body>
+
+</html>
