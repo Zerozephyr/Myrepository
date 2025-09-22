@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张同学简介 - 山东师范大学</title>
+  <style>
+    /* 全局样式重置（可选，简化演示） */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "微软雅黑", sans-serif;
+    }
+
+    body {
+      background-color: #fdfdfd;
+      color: #333;
+      overflow: hidden;
+      /* 防止滚动 */
+    }
+
+    /* 页面容器 */
+    .page-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* 第一页 - 海报页 - JetBrains毛玻璃风格 */
+    .page-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 50%, #1a1a1a 100%),
+        radial-gradient(circle at 15% 25%, rgba(79, 195, 247, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 85% 75%, rgba(100, 255, 218, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, rgba(255, 138, 101, 0.05) 0%, transparent 35%);
+      background-attachment: fixed;
+      z-index: 2;
+      transition: transform 0.8s ease-in-out;
+      overflow: hidden;
+    }
+
+    /* 第一页主要内容 */
+    .page1-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 60px;
+      min-height: calc(100vh - 60px);
+      margin: 0;
+    }
+
+    .page-1.hidden {
+      transform: translateY(-100%);
+    }
+
+    /* 海报图片 - 现在不需要了，标语直接显示在背景上 */
+    .poster {
+      display: none;
+    }
+
+    /* 标语容器 */
+    .slogan-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* 标语 - JetBrains风格 */
+    .slogan {
+      font-size: 110px;
+      color: #ffffff;
+      text-shadow: 0 0 40px rgba(255, 255, 255, 0.9), 3px 3px 10px rgba(0, 0, 0, 1);
+      font-weight: 700;
+      letter-spacing: 10px;
+      animation: fadeInUp 1s ease-out 0.5s both, techGlow 3s ease-in-out infinite alternate;
+      text-align: center;
+      line-height: 1.1;
+      font-family: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      transform: translateY(-200px);
+    }
+
+    @keyframes techGlow {
+      0% {
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.9);
+      }
+
+      100% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.5), 2px 2px 8px rgba(0, 0, 0, 0.9);
+      }
+    }
+
+    /* 翻页按钮 - JetBrains风格圆形图标 */
+    .next-page-btn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #4fc3f7;
+      font-size: 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: bounce 2s infinite;
+      text-shadow: 0 0 15px rgba(79, 195, 247, 0.8);
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .next-page-btn:hover {
+      transform: translateX(-50%) translateY(-5px);
+      text-shadow: 0 0 25px rgba(79, 195, 247, 1);
+    }
+
+    /* 背景视频 */
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    /* 第二页 - 原内容页 - JetBrains风格炫彩黑 */
+    .page-2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      background:
+        linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 50%, #1a1a1a 100%),
+        radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(100, 255, 218, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(255, 138, 101, 0.03) 0%, transparent 30%);
+      background-attachment: fixed;
+      color: #e0e0e0;
+    }
+
+    .page-2.visible {
+      opacity: 1;
+    }
+
+    /* 返回按钮 - JetBrains毛玻璃风格 */
+    .back-btn {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      padding: 12px 28px;
+      background: rgba(79, 195, 247, 0.2);
+      color: #4fc3f7;
+      border: 1px solid rgba(79, 195, 247, 0.4);
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+    }
+
+    .back-btn:hover {
+      background: rgba(79, 195, 247, 0.4);
+      border-color: rgba(79, 195, 247, 0.8);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(79, 195, 247, 0.4);
+      text-shadow: 0 0 15px rgba(79, 195, 247, 0.8);
+    }
+
+    .back-btn.show {
+      display: block;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    /* 导航栏样式 - 两页通用 */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 25px;
+      border-radius: 20px;
+      margin: 20px auto;
+      max-width: 1200px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-left img {
+      height: 40px;
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .header-left span {
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    .header-right a {
+      text-decoration: none;
+      color: #333;
+      margin-left: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .header-right a:hover {
+      color: #4fc3f7;
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.5);
+    }
+
+    /* 导航栏文字颜色 - 白色（两页通用） */
+    .header-left,
+    .header-right a {
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* 导航栏特殊样式 - JetBrains毛玻璃（两页通用） */
+    .header {
+      background: rgba(30, 30, 30, 0.3);
+      border: 1px solid rgba(79, 195, 247, 0.3);
+      backdrop-filter: blur(15px);
+    }
+
+    /* 第一页导航栏尺寸控制 */
+    .page-1 .header {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+
+
+    /* 主体内容（侧边栏 + 核心内容） */
+    .main {
+      display: flex;
+      gap: 20px;
+      margin: 20px;
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 12px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 左侧侧边栏 - JetBrains风格 */
+    .sidebar {
+      width: 200px;
+      background: rgba(60, 60, 60, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      color: #e0e0e0;
+      background: rgba(80, 80, 80, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .sidebar li:hover {
+      background: rgba(100, 100, 100, 0.5);
+      color: #4fc3f7;
+      border-color: rgba(79, 195, 247, 0.3);
+    }
+
+    /* 右侧核心内容 - JetBrains风格 */
+    .content {
+      flex: 1;
+      /* 自动填充剩余宽度 */
+      padding: 0 20px;
+    }
+
+    .profile {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      background: rgba(40, 40, 40, 0.8);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .profile img {
+      width: 150px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(79, 195, 247, 0.3);
+    }
+
+    .competition {
+      flex: 1;
+    }
+
+    .competition h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .competition p {
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .resume-hobby {
+      display: flex;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    .resume,
+    .hobby {
+      flex: 1;
+      background: rgba(40, 40, 40, 0.8);
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .resume h3,
+    .hobby h3,
+    .competition h3 {
+      color: #4fc3f7;
+      margin-bottom: 20px;
+      font-size: 22px;
+      font-weight: 600;
+      border-bottom: 2px solid rgba(79, 195, 247, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .resume p,
+    .hobby p,
+    .competition p {
+      margin-bottom: 12px;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+
+    /* 横幅叠加层 - 增加科技感 */
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(79, 195, 247, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 138, 101, 0.1) 0%, transparent 50%);
+      animation: techGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes techGlow {
+      0% {
+        opacity: 0.3;
+      }
+
+      100% {
+        opacity: 0.7;
+      }
+    }
+
+    /* 底部区域 - JetBrains风格 */
+    .footer {
+      display: flex;
+      gap: 30px;
+      background: rgba(30, 30, 30, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-col {
+      flex: 1;
+    }
+
+    .footer-col h3 {
+      color: #4fc3f7;
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      border-bottom: 2px solid rgba(79, 195, 247, 0.3);
+      padding-bottom: 10px;
+    }
+
+    .footer-col p {
+      margin-bottom: 10px;
+      line-height: 1.7;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 页面容器 -->
+  <div class="page-container">
+    <!-- 第一页 - 海报展示页 -->
+    <div class="page-1" id="page1">
+      <!-- 顶部导航栏 -->
+      <div class="header">
+        <div class="header-left">
+          <img src="logo_w.png" alt="Logo">
+          <span>张同学简历</span>
+        </div>
+        <div class="header-right">
+          <a href="#">网站首页</a> |
+          <a href="#">联系方式</a>
+        </div>
+      </div>
+
+      <!-- 第一页主要内容 -->
+      <div class="page1-content">
+        <div class="slogan-container">
+          <div class="slogan">一切皆有可能</div>
+        </div>
+        <!-- 背景视频 -->
+        <video class="background-video" autoplay muted loop>
+          <source src="首页背景.mp4" type="video/mp4">
+          您的浏览器不支持视频播放
+        </video>
+        <button class="next-page-btn" onclick="showPage2()">
+          ▼
+        </button>
+      </div>
+    </div>
+
+    <!-- 第二页 - 原内容页 -->
+    <div class="page-2" id="page2">
+      <!-- 返回按钮 -->
+      <button class="back-btn" onclick="showPage1()">← 返回首页</button>
+
+      <!-- 顶部导航栏 -->
+      <div class="header">
+        <div class="header-left">
+          <img src="logo_w.png" alt="Logo">
+          <span>张同学简历</span>
+        </div>
+        <div class="header-right">
+          <a href="#">网站首页</a> |
+          <a href="#">联系方式</a>
+        </div>
+      </div>
+
+      <!-- 横幅区域 - JetBrains风格高级背景 -->
+      <div class="banner"
+        style="background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 50%, #3d3d3d 100%); height: 300px; position: relative; overflow: hidden;">
+        <div class="banner-overlay"></div>
+        <div class="banner-text"
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 48px; color: #4fc3f7; text-shadow: 0 0 20px rgba(79, 195, 247, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.8); font-weight: 700; letter-spacing: 3px;">
+          张同学简历</div>
+      </div>
+
+      <!-- 主体内容 -->
+      <div class="main">
+        <!-- 左侧侧边栏 -->
+        <aside class="sidebar">
+          <ul>
+            <li>个人简历</li>
+            <li>竞赛经历</li>
+            <li>兴趣爱好</li>
+            <!-- 可扩展更多菜单项 -->
+          </ul>
+        </aside>
+
+        <!-- 右侧核心内容 -->
+        <div class="content">
+          <!-- 头像 + 竞赛经历 -->
+          <div class="profile">
+            <!-- 替换为实际头像路径，如 "images/profile.jpg" -->
+            <img src="证件照.jpg" alt="张同学证件照">
+            <div class="competition">
+              <h3>竞赛经历</h3>
+              <p>🥈 2024年蓝桥杯C/C++程序设计大赛省级三等奖</p>
+              <p>🏅 2024年院级社会实践优秀个人</p>
+              <p>⭐ 2024年军训校级旅嘉奖</p>
+              <p>🥇 2022年全国中小学生创新作文大赛总决赛三等奖</p>
+              <p>🏆 2022年全国中小学生创新作文大赛省赛一等奖</p>
+            </div>
+          </div>
+
+          <!-- 个人简历 + 兴趣爱好 -->
+          <div class="resume-hobby">
+            <div class="resume">
+              <h3>个人简历</h3>
+              <p><strong>姓名：</strong>张同学</p>
+              <p><strong>学校：</strong>山东师范大学</p>
+              <p><strong>专业：</strong>计算机科学与技术（非师范）</p>
+              <p><strong>年级：</strong>大二</p>
+              <p><strong>GPA：</strong>3.72/5.0</p>
+              <p><strong>邮箱：</strong>2048xxx008@buzhidao.com</p>
+              <p><strong>技能：</strong>Python, C++, HTML/CSS, Linux, Ros</p>
+            </div>
+            <div class="hobby">
+              <h3>兴趣爱好</h3>
+              <p>💻 <strong>编程开发：</strong>热衷于算法设计和Web开发</p>
+              <p>📚 <strong>阅读：</strong>喜欢阅读技术书籍和科幻小说</p>
+              <p>🏃 <strong>运动：</strong>热爱足球和羽毛球运动</p>
+              <p>🎵 <strong>音乐：</strong>喜欢弹钢琴和听流行音乐</p>
+              <p>🐶 <strong>动物：</strong>享受与小动物在一起的宁静时光</p>
+              <p>✈️ <strong>旅行：</strong>喜欢探索新的地方和文化</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部区域 -->
+      <div class="footer">
+        <div class="footer-col">
+          <h3>教育背景</h3>
+          <p>2024年9月 - 至今</p>
+          <p>山东师范大学</p>
+          <p>计算机科学与技术（非师范）</p>
+          <p>主修课程：数据结构、操作系统、计算机组成原理、数字电路</p>
+        </div>
+        <div class="footer-col">
+          <h3>项目规划</h3>
+          <p><strong>笔记交流网页</strong></p>
+          <p>预计开发一个支持用户分享和交流学习笔记的网页平台</p>
+          <p><strong>机器人仿真系统</strong></p>
+          <p>预计采用Ubuntu+Ros1，实现机器人自主导航功能</p>
+        </div>
+        <div class="footer-col">
+          <h3>获奖证书</h3>
+          <p>🏆 军训旅嘉奖证书</p>
+          <p>📜 英语四级证书</p>
+          <p>🏅 优秀学生干部</p>
+          <p>⭐ 三好学生标兵</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 页面元素缓存
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    const backBtn = document.querySelector('.back-btn');
+    const sidebarItems = document.querySelectorAll('.sidebar li');
+
+    // 侧边栏点击事件
+    sidebarItems.forEach(item => {
+      item.addEventListener('click', function () {
+        // 移除所有活动状态
+        sidebarItems.forEach(li => {
+          li.style.color = '';
+          li.style.fontWeight = '';
+        });
+
+        // 添加当前选中状态
+        this.style.color = '#007bff';
+        this.style.fontWeight = 'bold';
+
+        // 滚动到对应区域
+        const text = this.textContent;
+        const targetMap = {
+          '个人简历': '.resume',
+          '竞赛经历': '.competition',
+          '兴趣爱好': '.hobby'
+        };
+
+        if (targetMap[text]) {
+          document.querySelector(targetMap[text]).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // 页面加载动画
+    window.addEventListener('load', function () {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.5s ease-in';
+      setTimeout(() => {
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+
+    // 滚动效果
+    window.addEventListener('scroll', function () {
+      const scrolled = window.pageYOffset;
+      const banner = document.querySelector('.banner-text');
+      if (banner) {
+        banner.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.5}px))`;
+      }
+    });
+
+    // 页面切换功能
+    function showPage2() {
+      page1.classList.add('hidden');
+      setTimeout(() => {
+        page2.classList.add('visible');
+        backBtn.classList.add('show');
+      }, 400);
+    }
+
+    function showPage1() {
+      page2.classList.remove('visible');
+      backBtn.classList.remove('show');
+      setTimeout(() => {
+        page1.classList.remove('hidden');
+      }, 400);
+    }
+
+    // 键盘翻页支持
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === ' ') {
+        e.preventDefault();
+        if (!page1.classList.contains('hidden')) showPage2();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (page2.classList.contains('visible')) showPage1();
+      }
+    });
+
+    // 鼠标滚轮翻页支持
+    let wheelTimeout;
+    document.addEventListener('wheel', function (e) {
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (e.deltaY > 0 && !page1.classList.contains('hidden')) {
+          showPage2();
+        } else if (e.deltaY < 0 && page2.classList.contains('visible')) {
+          showPage1();
+        }
+      }, 100);
+    });
+  </script>
+</body>
+
+</html>
