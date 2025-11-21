@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>城市旅行写生本交流夜 · City Sketchbook Night</title>
+    <style>
+        /* 页面整体：背景渐变 + 居中布局 */
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: linear-gradient(135deg, #d7fdff, #f1fcfd);
+            color: #3b3025;
+            text-align: center;
+        }
+
+        /* 主内容"卡片"区域，用 box-shadow 制造层次感 */
+        .page {
+            display: inline-block;
+            background-color: #e3f7f7;
+            box-shadow: 0 0 30px rgba(80, 58, 35, 0.25);
+            text-align: left;
+            max-width: 720px;
+        }
+
+        /* 群组选择器：统一标题的颜色与字间距 */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #0cacb8;
+            letter-spacing: 1px;
+        }
+
+        /* 类选择器：居中与右对齐 */
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        /* 只作用在 p 标签、id 为 intro */
+        p#intro {
+            font-size: 140%;
+            font-weight: bold;
+            color: #038aa5;
+        }
+
+        /* 活动介绍的普通段落：通过行高与字间距来增强视觉舒适度 */
+        .intro-text {
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        /* 表格所在区域标题 */
+        .section-title {
+            text-align: center;
+        }
+
+        /* 表格基础样式：用背景色和行高区分层次 */
+        table {
+            width: 100%;
+            background-color: #c6f5ff;
+            font-size: 90%;
+        }
+
+        th {
+            background-color: #b9e8ff;
+            font-weight: bold;
+            text-align: left;
+            line-height: 2.2;
+        }
+
+        td {
+            line-height: 2.0;
+        }
+
+        /* 斑马纹行效果，让表格更易读 */
+        table tr:nth-child(even) {
+            background-color: #defbf8;
+        }
+
+        /* 鼠标移入整行高亮显示 */
+        table tr:hover {
+            background-color: #beeeee;
+        }
+
+        /* 后代选择器：div 里的 table 里的 a */
+        div table a {
+            font-weight: bold;
+            font-size: 110%;
+            color: #30858b;
+        }
+
+        /* 全局链接伪类样式 */
+        a:link {
+            color: #3ba0b6;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: #52787b;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #4ce3db;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: #3c4f9f;
+            text-decoration: underline;
+        }
+
+        /* 带类名的链接：重点与次要链接 */
+        a.red:link {
+            color: #0583bd;
+        }
+
+        a.red:active {
+            color: #22bbd2;
+        }
+
+        a.blue:link {
+            color: #4b7a7f;
+        }
+
+        a.blue:active {
+            color: #3a81a5;
+        }
+
+        /* 段落首字放大 + 特别颜色，营造杂志风排版感 */
+        p::first-letter {
+            font-size: 180%;
+            color: #0977a7;
+        }
+
+        /* div 的第一行高亮 */
+        div::first-line {
+            color: #0977a7;
+            font-weight: bold;
+        }
+
+        /* 底部公告文字略小，让层次更清晰 */
+        .notice {
+            font-size: 90%;
+            line-height: 1.6;
+        }
+
+        /* 小分隔线：用背景渐变模拟，无 border */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, rgba(91, 70, 54, 0), rgba(91, 70, 54, 0.6), rgba(91, 70, 54, 0));
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- 顶部标题区 -->
+        <h1 class="center">趵突泉街 · City Sketchbook Night</h1>
+
+        <div class="divider"></div><br>
+
+        <!-- 活动介绍区 -->
+        <div>
+            <h2 id="intro" class="center">活动介绍</h2>
+
+            <p class="intro-text right">
+                在趵突泉街举办的城市旅行写生本交流夜，为热爱城市探索和绘画记录的朋友们提供一个分享和交流的平台。
+            </p>
+
+            <p class="intro-text center">
+                无论你是初次尝试用画笔记录旅程，还是经验丰富的Sketchbook艺术家，都能在这里找到属于自己的创作空间。Join our travel community for an unforgettable
+                evening of urban exploration and artistic sharing.
+            </p>
+
+            <!-- 这个 p 使用 id="intro"，会被 p#intro 高亮处理 -->
+            <p id="intro">
+                重要提示：本次活动免费参加，但需要提前在线报名，名额有限！
+            </p>
+        </div>
+
+        <br>
+        <div class="divider"></div><br>
+
+        <!-- 活动报名情况表格区 -->
+        <div>
+            <h3 class="section-title">活动报名信息</h3>
+
+            <table>
+                <tr>
+                    <th>项目</th>
+                    <th>时间</th>
+                    <th>地点</th>
+                </tr>
+                <tr>
+                    <td>活动开始</td>
+                    <td>19:00</td>
+                    <td>趵突泉街艺术空间</td>
+                </tr>
+                <tr>
+                    <td>绘画交流</td>
+                    <td>19:30-20:30</td>
+                    <td>趵突泉街艺术空间</td>
+                </tr>
+                <tr>
+                    <td>作品展示</td>
+                    <td>20:30-21:30</td>
+                    <td>趵突泉街艺术空间</td>
+                </tr>
+                <tr>
+                    <td>活动结束</td>
+                    <td>21:30</td>
+                    <td>趵突泉街艺术空间</td>
+                </tr>
+            </table>
+        </div>
+
+        <br>
+        <div class="divider"></div><br>
+
+        <!-- 页面链接区 -->
+        <div class="center">
+            <p>
+                <a class="red" href="https://hongchenwusdnu.github.io/bookstore/job4.html">查看往期活动照片</a><br>
+                <a class="blue" href="https://zerozephyr.github.io/Myrepository/zzjob3/job3.html">在线咨询活动详情</a>
+            </p>
+        </div>
+
+        <br>
+        <div class="divider"></div><br>
+
+        <!-- 底部公告区：第一行被 div::first-line 强调 -->
+        <div class="notice">
+            公告一：请携带个人Sketchbook和绘画工具，场地会提供基础绘画材料。<br>
+            公告二：活动结束后将建立微信群，方便大家继续分享旅途记录和绘画作品。<br>
+            公告三：若遇天气或其他特殊情况导致活动延期，我们会提前通知所有报名者。
+        </div>
+
+        <br>
+
+    </div>
+
+</body>
+
+</html>
